@@ -1,0 +1,17 @@
+
+#eureka客户端服务地址配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  register-with-eureka 让注册中心不显示eureka注册的信息
+    register-with-eureka: false
+#eureka客户端服务名配置
+spring:
+  application:
+    name: eureka
+#eureka 端口
+server:
+  port: 8761
+
+
