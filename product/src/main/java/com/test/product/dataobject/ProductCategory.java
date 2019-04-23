@@ -1,6 +1,8 @@
 package com.test.product.dataobject;
 
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,8 +16,8 @@ import java.util.Date;
  */
 @Table(name = "product_category")
 @Entity
+@Data
 public class ProductCategory {
-
     @Id
     @GeneratedValue
     private Integer categoryId;
