@@ -42,6 +42,11 @@
             <version>1.4.4.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
 
         <dependency>
             <artifactId>mysql-connector-java</artifactId>
