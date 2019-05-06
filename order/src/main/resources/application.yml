@@ -15,4 +15,7 @@ eureka:
   client:
     service-url: http://127.0.0.1:8761/eureka
 
+PRODUCT:
+  ribbon:
+    NFLoadBalancerRuleClassName:  com.netflix.loadbalancer.RandomRule  #负载均衡规则 IRule的实现类 默认是RoundRobinRule轮询 RandomRule随机
 
