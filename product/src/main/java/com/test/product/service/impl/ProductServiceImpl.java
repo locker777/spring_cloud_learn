@@ -41,6 +41,12 @@ public class ProductServiceImpl implements ProductService {
             if (!productInfoOptional.isPresent()) {
                 throw new ProductException(ResultEnum.PRODUCT_NOT_EXIST);
             }
+
+            ProductInfo productInfo = productInfoOptional.get();
+            int result = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            if(result<0){
+                throw new ProductException(ResultEnum.PRODUCT_STOCK_ERROE);
+            }
         }
     }
 }
