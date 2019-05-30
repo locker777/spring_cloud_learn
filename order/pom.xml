@@ -51,7 +51,6 @@
             <artifactId>gson</artifactId>
         </dependency>
 
-
         <dependency>
             <artifactId>mysql-connector-java</artifactId>
             <groupId>mysql</groupId>

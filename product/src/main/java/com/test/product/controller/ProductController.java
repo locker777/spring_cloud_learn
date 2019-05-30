@@ -10,9 +10,7 @@ import com.test.product.service.ProductService;
 import com.test.product.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.Action;
 import java.util.ArrayList;
@@ -64,7 +62,7 @@ public class ProductController {
             List<ProductInfoVO> productInfoVOList = new ArrayList<>();
             for (ProductInfo productInfo : productInfoList) {
 
-                if(productCategory.getCategoryType()==productInfo.getCategoryType()){
+                if (productCategory.getCategoryType() == productInfo.getCategoryType()) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
                     BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);
@@ -77,5 +75,19 @@ public class ProductController {
         }
 
         return ResultVOUtil.success(productVOList);
+    }
+
+    /**
+     * 功能描述:获取商品列表（给订单服务用的）
+     *
+     * @auther: zjc
+     * @date: 2019/5/30 11:26
+     * @param: [productIdList]
+     * @return: java.util.List<com.test.product.dataobject.ProductInfo>
+     */
+    @PostMapping("/listForOrder")//没有参数的时候可以用get，有参数时只能用post
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+
+        return productService.findList(productIdList);
     }
 }

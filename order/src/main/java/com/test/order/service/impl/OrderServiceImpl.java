@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO create(OrderDTO orderDTO) {
 
-        // TODO 查询商品信息
+        // TODO 查询商品信息（调用商品服务）
         // TODO 计算总价
         // TODO 扣库存（调用商品服务）
 
