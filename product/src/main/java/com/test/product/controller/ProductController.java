@@ -1,5 +1,6 @@
 package com.test.product.controller;
 
+import com.test.product.dto.CartDTO;
 import com.test.product.VO.ProductInfoVO;
 import com.test.product.VO.ProductVO;
 import com.test.product.VO.ResultVO;
@@ -12,7 +13,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -90,4 +90,12 @@ public class ProductController {
 
         return productService.findList(productIdList);
     }
+
+    @PostMapping("/decreaseStock")
+    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
+
+        productService.decreaseStock(cartDTOList);
+    }
+
+
 }

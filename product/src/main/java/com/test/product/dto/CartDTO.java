@@ -1,4 +1,4 @@
-package com.test.product.DTO;
+package com.test.product.dto;
 
 import lombok.Data;
 
@@ -20,5 +20,11 @@ public class CartDTO {
      */
     private int productQuantity;
 
+    public CartDTO() {
+    }
 
+    public CartDTO(String productId, int productQuantity) {
+        this.productId = productId;
+        this.productQuantity = productQuantity;
+    }
 }

@@ -1,6 +1,6 @@
 package com.test.product.service.impl;
 
-import com.test.product.DTO.CartDTO;
+import com.test.product.dto.CartDTO;
 import com.test.product.dataobject.ProductInfo;
 import com.test.product.enums.ProductStatusEnum;
 import com.test.product.enums.ResultEnum;
@@ -9,6 +9,7 @@ import com.test.product.repository.ProductInfoRepository;
 import com.test.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +36,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
             Optional<ProductInfo> productInfoOptional = productInfoRepository.findById(cartDTO.getProductId());
@@ -43,10 +45,13 @@ public class ProductServiceImpl implements ProductService {
             }
 
             ProductInfo productInfo = productInfoOptional.get();
+            //库存是否足够
             int result = productInfo.getProductStock() - cartDTO.getProductQuantity();
             if(result<0){
                 throw new ProductException(ResultEnum.PRODUCT_STOCK_ERROE);
             }
+            productInfo.setProductStock(result);
+            productInfoRepository.save(productInfo);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.test.product.service;
 
-import com.test.product.DTO.CartDTO;
+import com.test.product.dto.CartDTO;
 import com.test.product.dataobject.ProductInfo;
 
 import java.util.List;

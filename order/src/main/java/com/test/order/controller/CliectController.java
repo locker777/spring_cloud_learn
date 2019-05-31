@@ -2,6 +2,7 @@ package com.test.order.controller;
 
 import com.test.order.client.ProductClient;
 import com.test.order.dataobject.ProductInfo;
+import com.test.order.dto.CartDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,13 @@ public class CliectController {
 
         List<ProductInfo> productInfoList = productClient.listForOrder(Arrays.asList("157875227953464068"));
         log.info("response={}", productInfoList);
+        return "ok";
+    }
+
+    @GetMapping("/proudctDecreaseStock")
+    public String proudctDecreaseStock(){
+        CartDTO cartDTO = new CartDTO("164103465734242707", 82);
+        productClient.decreaseStock(Arrays.asList(cartDTO));
         return "ok";
     }
 

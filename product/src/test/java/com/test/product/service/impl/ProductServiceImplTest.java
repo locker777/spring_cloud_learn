@@ -1,5 +1,6 @@
 package com.test.product.service.impl;
 
+import com.test.product.dto.CartDTO;
 import com.test.product.ProductApplicationTests;
 import com.test.product.dataobject.ProductInfo;
 import com.test.product.service.ProductService;
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Auther: zjc
@@ -36,4 +35,18 @@ public class ProductServiceImplTest extends ProductApplicationTests {
         List<ProductInfo> productInfos= productService.findList(Arrays.asList("157875196366160022"));
         System.out.println(productInfos.size());
     }
+
+    @Test
+    public void decreaseStock() throws Exception{
+
+
+        CartDTO cartDTO = new CartDTO("157875196366160022", 1);
+
+        productService.decreaseStock(Arrays.asList(cartDTO));
+
+
+
+    }
+
+
 }
