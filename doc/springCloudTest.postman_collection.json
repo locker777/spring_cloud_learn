@@ -1,0 +1,106 @@
+{
+	"variables": [],
+	"info": {
+		"name": "springCloudTest",
+		"_postman_id": "22b0883f-dce1-a89d-cc90-0c2ffa6abbb3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "商品列表查询",
+			"request": {
+				"url": "http://127.0.0.1:8080/product/list",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "商品列表查询"
+			},
+			"response": []
+		},
+		{
+			"name": "订单创建",
+			"request": {
+				"url": "http://127.0.0.1:8080/order/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "赵先生",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "phone",
+							"value": "13800138000",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "address",
+							"value": "北京",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "openid",
+							"value": "locker777",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "items",
+							"value": "[{\"productId\": \"1423113435324\",\" productQuantity\": 2  }]",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "订单创建"
+			},
+			"response": []
+		},
+		{
+			"name": "get msg测试",
+			"request": {
+				"url": "http://127.0.0.1:8081/getProductMsg",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "get msg测试"
+			},
+			"response": []
+		},
+		{
+			"name": "获取商品列表",
+			"request": {
+				"url": "http://127.0.0.1:8081/getProductList",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "获取商品列表"
+			},
+			"response": []
+		},
+		{
+			"name": "扣库存",
+			"request": {
+				"url": "http://127.0.0.1:8081/getProductList",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "扣库存"
+			},
+			"response": []
+		}
+	]
+}
