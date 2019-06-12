@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
         for (OrderDetail orderDetail : orderDTO.getOrderDetailList()) {
             for (ProductInfo productInfo : productInfoList) {
                 if (productInfo.getProductId().equals(orderDetail.getProductId())) {
-                    orderAmount = orderDetail.getProductPrice().multiply(new BigDecimal(orderDetail.getProductQuantity()))
+                    orderAmount = productInfo.getProductPrice().multiply(new BigDecimal(orderDetail.getProductQuantity()))
                             .add(orderAmount);
                     //单价*数量
                     BeanUtils.copyProperties(productInfo, orderDetail);
