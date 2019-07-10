@@ -1,4 +1,4 @@
-package com.test.client;
+package com.test.product.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

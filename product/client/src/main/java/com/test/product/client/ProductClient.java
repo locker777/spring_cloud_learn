@@ -1,4 +1,4 @@
-package com.test.client;
+package com.test.product.client;
 
 import com.test.product.common.DecreaseStockInput;
 import com.test.product.common.ProductInfoOutput;

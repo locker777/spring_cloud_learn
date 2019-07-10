@@ -24,6 +24,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Finchley.M2</spring-cloud.version>
+        <product-common.version>1.0-SNAPSHOT</product-common.version>
     </properties>
 
     <dependencyManagement>
@@ -34,6 +35,11 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.test</groupId>
+                <artifactId>product-common</artifactId>
+                <version>${product-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
