@@ -10,5 +10,5 @@ import com.test.order.dto.OrderDTO;
 
 public interface OrderService {
 
-     OrderDTO create(OrderDTO orderDTO);
+    OrderDTO create(OrderDTO orderDTO);
 }

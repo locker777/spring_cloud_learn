@@ -8,11 +8,11 @@ import lombok.Getter;
  * @Description:
  */
 @Getter
-public enum  OrderStatusEnums {
+public enum OrderStatusEnums {
 
-    NEW(0,"新订单"),
-    FINISHED(1,"新订单"),
-    CANCEL(2,"新订单"),;
+    NEW(0, "新订单"),
+    FINISHED(1, "新订单"),
+    CANCEL(2, "新订单"),;
 
     private Integer code;
     private String message;

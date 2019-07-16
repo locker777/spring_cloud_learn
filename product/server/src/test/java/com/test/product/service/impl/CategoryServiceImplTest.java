@@ -22,10 +22,11 @@ public class CategoryServiceImplTest extends ProductApplicationTests {
 
     @Autowired
     private CategoryService categoryService;
+
     @Test
     public void findByCategoryTypeIn() {
 
-        List<ProductCategory> categories= categoryService.findByCategoryTypeIn(Arrays.asList(11,22));
+        List<ProductCategory> categories = categoryService.findByCategoryTypeIn(Arrays.asList(11, 22));
 
 
         System.out.println(categories.size());

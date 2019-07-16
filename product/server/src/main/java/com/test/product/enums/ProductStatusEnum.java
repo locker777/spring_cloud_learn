@@ -4,6 +4,7 @@ import lombok.Getter;
 
 /**
  * 商品上下架状态
+ *
  * @Auther: zjc
  * @Date: 2019/4/23 10:20
  * @Description:
@@ -11,8 +12,8 @@ import lombok.Getter;
 @Getter
 public enum ProductStatusEnum {
 
-    UP(0,"在架"),
-    DOWN(1,"下架"),;
+    UP(0, "在架"),
+    DOWN(1, "下架"),;
 
     private Integer code;
     private String message;

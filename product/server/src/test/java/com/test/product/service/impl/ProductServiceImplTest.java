@@ -21,29 +21,29 @@ public class ProductServiceImplTest extends ProductApplicationTests {
 
     @Autowired
     private ProductService productService;
+
     @Test
     public void findUpAll() {
 
-        List<ProductInfo> productInfos= productService.findUpAll();
+        List<ProductInfo> productInfos = productService.findUpAll();
         System.out.println(productInfos.size());
     }
 
 
     @Test
-    public void findList() throws Exception{
+    public void findList() throws Exception {
 
-        List<ProductInfo> productInfos= productService.findList(Arrays.asList("157875196366160022"));
+        List<ProductInfo> productInfos = productService.findList(Arrays.asList("157875196366160022"));
         System.out.println(productInfos.size());
     }
 
     @Test
-    public void decreaseStock() throws Exception{
+    public void decreaseStock() throws Exception {
 
 
         CartDTO cartDTO = new CartDTO("157875196366160022", 1);
 
         productService.decreaseStock(Arrays.asList(cartDTO));
-
 
 
     }

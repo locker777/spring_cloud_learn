@@ -12,7 +12,7 @@ import java.util.List;
  * @Description:
  */
 @Repository
-public interface ProductInfoRepository extends JpaRepository<ProductInfo,String> {
+public interface ProductInfoRepository extends JpaRepository<ProductInfo, String> {
 
     List<ProductInfo> findByProductStatus(Integer productStatus);
 

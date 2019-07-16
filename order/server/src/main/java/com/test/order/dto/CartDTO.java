@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
-public class CartDTO  {
+public class CartDTO {
 
     /**
      * 商品ID

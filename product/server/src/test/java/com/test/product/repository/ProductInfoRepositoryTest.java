@@ -35,10 +35,10 @@ public class ProductInfoRepositoryTest {
     @Test
     public void findByProductId() throws Exception {
 
-        List<String> productIdList=new ArrayList<>();
+        List<String> productIdList = new ArrayList<>();
         productIdList.add("157875196366160022");
         productIdList.add("157875227953464068");
-        List<ProductInfo> productInfoList = productInfoRepository.findByProductIdIn(Arrays.asList("157875196366160022","157875227953464068"));
+        List<ProductInfo> productInfoList = productInfoRepository.findByProductIdIn(Arrays.asList("157875196366160022", "157875227953464068"));
 
         Assert.assertTrue(productInfoList.size() > 0);
     }
