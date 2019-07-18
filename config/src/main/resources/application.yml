@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/locker777/config-repo.git
+          username: locker777
+          password: 4rfvbhu8
+eureka:
+  client:
+    service-url:
+      defaltZone: http://localhost:8761/eureka
