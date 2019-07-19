@@ -8,6 +8,8 @@ spring:
           uri: https://github.com/locker777/config-repo.git
           username: locker777
           password: 4rfvbhu8
+          basedir: E:/workspaces/springConfigSpace/config
+#basedir 从git下载的配置会存到这个目录3
 eureka:
   client:
     service-url:
