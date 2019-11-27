@@ -3,9 +3,10 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8762/eureka/
 #  register-with-eureka 让注册中心不显示eureka注册的信息
-    register-with-eureka: false
+    register-with-eureka: true
+    fetch-registry: false
 # 实时判断服务是否已经不在线，由于默认eureka会认为服务活着而显示，建议生产不要设置false
   server:
     enable-self-preservation: false
@@ -15,7 +16,8 @@ spring:
     name: eureka
 #eureka 端口
 server:
-  port: 8761
+  port: 8762
+
 
 #两台集群1注册2,2注册1
 #三台集群1注册2、3,2注册1、3,3注册1、2

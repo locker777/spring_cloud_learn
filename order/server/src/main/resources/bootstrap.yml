@@ -1,0 +1,27 @@
+#bootstrap 本意是启动的意思 和框架名没有关系
+spring:
+  application:
+    name: order
+  #datasource:
+  #  url: jdbc:mysql://192.168.115.142:3306/springcloud_sell?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+  #  driver-class-name: com.mysql.jdbc.Driver
+  #  username: root
+  #  password: root
+  #  dialect: org.hibernate.dialect.MySQLDialect
+  jpa:
+    show-sql: false
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: test
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka
+
+PRODUCT:
+  ribbon:
+    NFLoadBalancerRuleClassName:  com.netflix.loadbalancer.RandomRule  #负载均衡规则 IRule的实现类 默认是RoundRobinRule轮询 RandomRule随机
