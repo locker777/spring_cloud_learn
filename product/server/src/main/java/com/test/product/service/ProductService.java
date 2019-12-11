@@ -1,5 +1,6 @@
 package com.test.product.service;
 
+import com.test.product.common.DecreaseStockInput;
 import com.test.product.dto.CartDTO;
 import com.test.product.dataobject.ProductInfo;
 
@@ -27,7 +28,7 @@ public interface ProductService {
     /**
      * 扣库存
      */
-    void decreaseStock(List<CartDTO> cartDTOList);
+    void decreaseStock(List<DecreaseStockInput> decreaseStockInputList);
 
 
 }

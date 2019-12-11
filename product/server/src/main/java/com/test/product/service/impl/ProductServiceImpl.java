@@ -1,5 +1,6 @@
 package com.test.product.service.impl;
 
+import com.test.product.common.DecreaseStockInput;
 import com.test.product.dto.CartDTO;
 import com.test.product.dataobject.ProductInfo;
 import com.test.product.enums.ProductStatusEnum;
@@ -37,16 +38,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void decreaseStock(List<CartDTO> cartDTOList) {
-        for (CartDTO cartDTO : cartDTOList) {
-            Optional<ProductInfo> productInfoOptional = productInfoRepository.findById(cartDTO.getProductId());
+    public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
+        for (DecreaseStockInput decreaseStockInput: decreaseStockInputList) {
+            Optional<ProductInfo> productInfoOptional = productInfoRepository.findById(decreaseStockInput.getProductId());
+            //判断商品是否存在
             if (!productInfoOptional.isPresent()) {
                 throw new ProductException(ResultEnum.PRODUCT_NOT_EXIST);
             }
 
             ProductInfo productInfo = productInfoOptional.get();
             //库存是否足够
-            int result = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            int result = productInfo.getProductStock() - decreaseStockInput.getProductQuantity();
             if (result < 0) {
                 throw new ProductException(ResultEnum.PRODUCT_STOCK_ERROE);
             }
