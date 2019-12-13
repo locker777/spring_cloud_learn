@@ -1,5 +1,6 @@
 package com.test.product.service.impl;
 
+import com.test.product.common.DecreaseStockInput;
 import com.test.product.dto.CartDTO;
 import com.test.product.ProductApplicationTests;
 import com.test.product.dataobject.ProductInfo;
@@ -41,9 +42,9 @@ public class ProductServiceImplTest extends ProductApplicationTests {
     public void decreaseStock() throws Exception {
 
 
-        CartDTO cartDTO = new CartDTO("157875196366160022", 1);
+        DecreaseStockInput decreaseStockInput = new DecreaseStockInput("157875196366160022", 1);
 
-        productService.decreaseStock(Arrays.asList(cartDTO));
+        productService.decreaseStock(Arrays.asList(decreaseStockInput));
 
 
     }

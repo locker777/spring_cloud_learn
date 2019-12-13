@@ -1,5 +1,6 @@
 package com.test.product.controller;
 
+import com.test.product.common.DecreaseStockInput;
 import com.test.product.dto.CartDTO;
 import com.test.product.VO.ProductInfoVO;
 import com.test.product.VO.ProductVO;
@@ -92,9 +93,9 @@ public class ProductController {
     }
 
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
+    public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
 
-        productService.decreaseStock(cartDTOList);
+        productService.decreaseStock(decreaseStockInputList);
     }
 
 
