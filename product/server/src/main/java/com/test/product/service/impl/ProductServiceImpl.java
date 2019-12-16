@@ -1,6 +1,7 @@
 package com.test.product.service.impl;
 
 import com.test.product.common.DecreaseStockInput;
+import com.test.product.common.ProductInfoOutput;
 import com.test.product.dataobject.ProductInfo;
 import com.test.product.enums.ProductStatusEnum;
 import com.test.product.enums.ResultEnum;
@@ -9,12 +10,15 @@ import com.test.product.repository.ProductInfoRepository;
 import com.test.product.service.ProductService;
 import com.test.product.utils.JsonUtil;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @Auther: zjc
@@ -41,9 +45,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional
+
     public void decreaseStock(List<DecreaseStockInput> decreaseStockInputList) {
-        for (DecreaseStockInput decreaseStockInput: decreaseStockInputList) {
+
+        List<ProductInfo> productInfoList = decreaseStockProcess(decreaseStockInputList);
+
+        //发送mq消息
+        List<ProductInfoOutput> productInfoOutputList = productInfoList.stream().map(e -> {
+            ProductInfoOutput output = new ProductInfoOutput();
+            BeanUtils.copyProperties(e, output);
+            return output;
+        }).collect(Collectors.toList());
+
+        amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(productInfoOutputList));
+    }
+
+    @Transactional
+    public List<ProductInfo> decreaseStockProcess(List<DecreaseStockInput> decreaseStockInputList) {
+        List<ProductInfo> productInfoList = new ArrayList<>();
+
+        for (DecreaseStockInput decreaseStockInput : decreaseStockInputList) {
             Optional<ProductInfo> productInfoOptional = productInfoRepository.findById(decreaseStockInput.getProductId());
             //判断商品是否存在
             if (!productInfoOptional.isPresent()) {
@@ -58,9 +79,8 @@ public class ProductServiceImpl implements ProductService {
             }
             productInfo.setProductStock(result);
             productInfoRepository.save(productInfo);
-
-            //发送mq消息
-            amqpTemplate.convertAndSend("productInfo",JsonUtil.toJson(productInfo));
+            productInfoList.add(productInfo);
         }
+        return productInfoList;
     }
 }
