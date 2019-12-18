@@ -1,0 +1,38 @@
+#bootstrap 本意是启动的意思 和框架名没有关系
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka
+zuul:
+  routes:
+    myProduct:
+      path: /myProduct/**
+      serviceId: product
+    myConfig:
+          path: /myConfig/**
+          serviceId: config
+# 下面的配置是我自己加的，如果不加访问/config/order-test.yml时会报错
+# com.netflix.zuul.exception.ZuulException: Forwarding error
+# Caused by: com.netflix.hystrix.exception.HystrixRuntimeException: config timed-out and no fallback available.
+# Caused by: java.util.concurrent.TimeoutException: null
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  eureka:
+  enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

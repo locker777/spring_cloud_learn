@@ -1,4 +1,4 @@
-package com.test.apigetway;
+package com.test.apigateway;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
