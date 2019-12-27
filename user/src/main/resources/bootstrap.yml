@@ -1,0 +1,15 @@
+#bootstrap 本意是启动的意思 和框架名没有关系
+spring:
+  application:
+    name: user
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG
+      profile: dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka
