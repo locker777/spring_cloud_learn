@@ -1,4 +1,4 @@
-package com.test.userserver;
+package com.test.user;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
