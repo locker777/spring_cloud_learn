@@ -3,7 +3,6 @@ package com.test.apigateway.filter;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +13,10 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 /**
  * @Auther: zjc
  * @Date: 2019/12/19 14:21
- * @Description:
+ * @Description: 权限拦截 区分买家和卖家
  */
 @Component
-public class TokenFilter extends ZuulFilter {
+public class AuthFilter extends ZuulFilter {
 
 
     @Override
@@ -46,12 +45,15 @@ public class TokenFilter extends ZuulFilter {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
 
-        //这里从url参数里获取，也可以从cookie或者header里获取
-        String token = request.getParameter("token");
-        if (StringUtils.isBlank(token)) {
-//            requestContext.setSendZuulResponse(false);
-//            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
-        }
+        /**
+         * /order/create 只能买家访问
+         *
+         * /order/finish 只能卖家访问
+         *
+         * /product/list 都可访问
+         */
+
+
         return null;
     }
 }

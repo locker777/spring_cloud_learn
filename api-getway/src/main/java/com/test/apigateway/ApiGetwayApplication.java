@@ -17,7 +17,7 @@ public class ApiGetwayApplication {
 
     @ConfigurationProperties("zuul")
     @RefreshScope
-    public ZuulProperties zuulProperties(){
-        return  new ZuulProperties();
+    public ZuulProperties zuulProperties() {
+        return new ZuulProperties();
     }
 }
