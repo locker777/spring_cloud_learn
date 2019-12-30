@@ -24,11 +24,11 @@ public class SendMessageController {
      * 发送OrderDTO对象
      */
     @GetMapping("/sendMessage")
-    public void  process(){
+    public void process() {
 
-        OrderDTO orderDTO=new OrderDTO();
+        OrderDTO orderDTO = new OrderDTO();
         orderDTO.setOrderId("123456");
-        String message="now "+new Date();
+        String message = "now " + new Date();
         streamClient.output().send(MessageBuilder.withPayload(orderDTO).build());
     }
 

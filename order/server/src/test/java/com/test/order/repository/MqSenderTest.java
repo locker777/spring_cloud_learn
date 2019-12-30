@@ -20,15 +20,15 @@ public class MqSenderTest extends OrderApplicationTests {
     private AmqpTemplate amqpTemplate;
 
     @Test
-    public void send(){
+    public void send() {
 
-        amqpTemplate.convertAndSend("myQueues","now ="+new Date());
+        amqpTemplate.convertAndSend("myQueues", "now =" + new Date());
     }
 
     @Test
-    public void sendOrder(){
+    public void sendOrder() {
 
-        amqpTemplate.convertAndSend("myOrder","computer","now ="+new Date());
+        amqpTemplate.convertAndSend("myOrder", "computer", "now =" + new Date());
     }
 
 }

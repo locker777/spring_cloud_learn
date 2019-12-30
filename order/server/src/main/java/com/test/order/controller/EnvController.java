@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class EnvController {
 
     @Value("${env}")
-    private  String env;
+    private String env;
 
     @GetMapping("/print")
-    public String print(){
+    public String print() {
         return env;
     }
 }
