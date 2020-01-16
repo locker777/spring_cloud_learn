@@ -40,6 +40,7 @@ public class ProductController {
      * 4、构造数据
      */
     @GetMapping("/list")
+    @CrossOrigin(allowCredentials = "true")//allowCredentials:允许cookie跨域
     public ResultVO<ProductVO> list() {
 
         //查询所有在架的商品
