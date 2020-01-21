@@ -90,6 +90,11 @@ public class ProductController {
     @PostMapping("/listForOrder")//没有参数的时候可以用get，有参数时只能用post
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return productService.findList(productIdList);
     }
 

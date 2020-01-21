@@ -29,3 +29,16 @@ eureka:
 PRODUCT:
   ribbon:
     NFLoadBalancerRuleClassName:  com.netflix.loadbalancer.RandomRule  #负载均衡规则 IRule的实现类 默认是RoundRobinRule轮询 RandomRule随机
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    getProductInfoList: #自定义
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 3000
