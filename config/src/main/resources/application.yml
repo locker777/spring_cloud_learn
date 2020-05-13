@@ -9,11 +9,11 @@ spring:
           uri: https://github.com/locker777/config-repo.git
           username: locker777
           password: locker777@free
-          basedir: E:/workspaces/springConfigSpace/config
+          basedir: I:/workspaces/springConfigSpace/config
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8762/eureka/
+      defaultZone: http://eureka:8762/eureka/
 #暴露/actuator/bus-refresh接口
 management:
   endpoints:
